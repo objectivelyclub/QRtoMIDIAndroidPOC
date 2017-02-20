@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="qr_generator.QRDisplayPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:qr_generator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="2*" />
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions>
+      <Image Grid.Row ="0" Name="imageBarcode" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></Image>
+      <TextBlock x:Name="dataSizeTextBlock" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="Data size:"></Run>
+        <Run Text="{x:Bind dataSizeText, Mode=OneWay}"></Run>
+        <Run Text="bytes"></Run>
+        <LineBreak />
+        <Run Text="Data contents:"></Run>
+        <Run Text="{x:Bind dataContentsText, Mode=OneWay}"></Run>
+      </TextBlock>
+      <TextBlock x:Name="dataFrameNumberTextBlock" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="Frame number:"></Run>
+        <Run Text="{x:Bind currentFrameNumberText, Mode=OneWay}"></Run>
+        <Run Text="/"></Run>
+        <Run Text="{x:Bind totalFramesText, Mode=OneWay}"></Run>
+      </TextBlock>
+      <TextBlock x:Name="fileNameTextBlock" HorizontalAlignment="Center" Margin="0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top">
+        <Run Text="Parsing file:"></Run>
+        <Run Text="{x:Bind fileNameText, Mode=OneWay}"></Run>
+      </TextBlock>
+        </Grid>
+    
+  </Grid>
+</Page>

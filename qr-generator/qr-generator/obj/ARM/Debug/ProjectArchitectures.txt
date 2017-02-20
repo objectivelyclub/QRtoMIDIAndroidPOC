@@ -1,0 +1,1 @@
+C:\Users\Rijesh\Source\Repos\victoria\qr-generator\qr-generator\qr-generator.csproj;arm

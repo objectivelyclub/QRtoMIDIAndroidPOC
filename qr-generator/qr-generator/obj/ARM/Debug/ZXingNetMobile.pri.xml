@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="ZXingNetMobile" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="ZXingNetMobile">
+				<NamedResource name="ScanPage.xbf" uri="ms-resource://ZXingNetMobile/Files/ZXingNetMobile/ScanPage.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ZXingNetMobile.xr.xml" uri="ms-resource://ZXingNetMobile/Files/ZXingNetMobile/ZXingNetMobile.xr.xml">
+					<Candidate type="Path">
+						<Value>ZXingNetMobile\ZXingNetMobile.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ZXingScannerControl.xbf" uri="ms-resource://ZXingNetMobile/Files/ZXingNetMobile/ZXingScannerControl.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>
