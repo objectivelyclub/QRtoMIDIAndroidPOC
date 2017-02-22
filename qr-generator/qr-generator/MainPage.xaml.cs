@@ -44,8 +44,8 @@ namespace qr_generator
             FileOpenPicker filePicker = new FileOpenPicker();
             filePicker.ViewMode = PickerViewMode.Thumbnail;
             filePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            filePicker.FileTypeFilter.Add(".mid");
-            filePicker.FileTypeFilter.Add(".midi");
+            filePicker.FileTypeFilter.Add(".pmid");
+            filePicker.FileTypeFilter.Add(".pmidi");
             midiFile = await filePicker.PickSingleFileAsync();
             if (midiFile != null)
             {
