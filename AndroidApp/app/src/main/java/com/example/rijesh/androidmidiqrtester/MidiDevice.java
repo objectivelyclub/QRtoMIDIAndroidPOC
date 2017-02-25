@@ -1,5 +1,7 @@
 package com.example.rijesh.androidmidiqrtester;
 
+import android.util.Log;
+
 import org.billthefarmer.mididriver.MidiDriver;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,8 +25,10 @@ public class MidiDevice  implements MidiDriver.OnMidiStartListener{
         Thread thread = new Thread() {
             @Override
             public void run() {
-                for(int ind=9;ind < b.length - 9; ind+=9){ // Each line is 9 bytes and each message occupies the first 7 bytes
+                final Byte QR_num = b[0];
+                for(int ind=9;ind < b.length ; ind+=9){ // Each line is 9 bytes and each message occupies the first 7 bytes
                     final int i = ind;
+
                     executor.execute(new Runnable() {
                         public void run() {
                             try {
@@ -34,9 +38,16 @@ public class MidiDevice  implements MidiDriver.OnMidiStartListener{
                                 e.printStackTrace();
                             };
                             midi.write(new byte[] {b[i+4], b[i+5], b[i+6] }); // Next three bytes are the actual message.
+                            if (i == 9) {
+                                Log.i("myTag", "Started Playing QR " + QR_num.toString());
+                            }
+                            else if (i >= b.length - 10){
+                                Log.i("myTag", "finished playing QR " + QR_num.toString());
+                            }
                         }
                     });
                 }
+                Log.i("myTag", "finished adding QR " + QR_num.toString() + " to Queue");
             }
         };
         thread.start();

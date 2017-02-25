@@ -1,11 +1,16 @@
 package com.example.rijesh.androidmidiqrtester;
 
 import org.apache.commons.codec.binary.Base64;
+
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import FastBarcodeScanner;
+
 
 import com.google.zxing.Result;
 
@@ -20,8 +25,10 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class MainActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler  {
     private ZXingScannerView mScannerView;
     private MidiDevice midiDev;
-    private long timeSinceLastProcess = System.currentTimeMillis();
     private Byte current = 27;
+    FasBarcodeScanner mScanner = new FastBarcodeScanner(this, null);
+    mScanner.setBarcodeListener(this);
+    mScanner.StartFocus();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +98,16 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         mScannerView.startCamera();         // Start camera
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void handleResult(Result rawResult) {
-        String st = rawResult.toString();
-        byte[] st1 = st.getBytes();
+        mScannerView.stopCameraPreview();
+        mScannerView.setAutoFocus(false);
+        mScannerView.resumeCameraPreview(this);
         byte[] b = Base64.decodeBase64(rawResult.toString().getBytes());
 
         if (b[0] != current) {
             current = b[0];
-            Log.i("myTag", current.toString());
             midiDev.addToQueue(b);
         }
 
